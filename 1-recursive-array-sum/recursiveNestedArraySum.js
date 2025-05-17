@@ -5,7 +5,7 @@ export const recursiveNestedArraySum = (nestedNumberArray) => {
   let sum = 0;
 
   for (const item of nestedNumberArray) {
-    if (item.length > 0) {
+    if (Array.isArray(item) && item.length > 0) {
       sum += recursiveNestedArraySum(item)
     } else {
       sum += item
