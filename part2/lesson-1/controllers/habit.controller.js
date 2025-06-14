@@ -10,7 +10,7 @@ export const handleAdd = (args) => {
   }
   const habit = addHabit(name, freq);
   console.log('Habit added:', habit);
-}
+};
 
 export const handleList = () => {
   const habits = listHabits();
@@ -24,14 +24,14 @@ export const handleList = () => {
     Freq: h.freq,
     DoneToday: h.doneDates.includes(new Date().toISOString().split('T')[0])
   })));
-}
+};
 
 export const handleDelete = (args) => {
   const id = _getArg(args, '--id');
   if (!id) return console.error('Usage: delete --id <id>');
   deleteHabit(id);
   console.log('Habit deleted.');
-}
+};
 
 export const handleUpdate = (args) => {
   const id = _getArg(args, '--id');
@@ -44,7 +44,7 @@ export const handleUpdate = (args) => {
   const updated = updateHabit(id, name, freq);
   if (updated) console.log('Habit updated:', updated);
   else console.error('Habit not found.');
-}
+};
 
 export const handleDone = (args) => {
   const id = _getArg(args, '--id');
@@ -52,14 +52,14 @@ export const handleDone = (args) => {
   const updated = markDone(id);
   if (updated) console.log('Habit marked as done for today.');
   else console.error('Habit not found.');
-}
+};
 
 export const handleStats = () => {
   const stats = calculateStats(7);
   console.table(stats);
-}
+};
 
 const _getArg = (args, key) => {
   const i = args.indexOf(key);
   return i !== -1 && i + 1 < args.length ? args[i + 1] : null;
-}
+};

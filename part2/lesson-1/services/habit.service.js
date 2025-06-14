@@ -4,7 +4,7 @@ import { getDateOffset } from '../utils/getDateOffset.js';
 
 const _generateId = () => {
   return Math.random().toString(36).substring(2, 10);
-}
+};
 
 export const addHabit = (name, freq) => {
   const db = readDatabase();
@@ -18,17 +18,17 @@ export const addHabit = (name, freq) => {
   db.push(habit);
   writeDatabase(db);
   return habit;
-}
+};
 
 export const listHabits = () => {
   return readDatabase();
-}
+};
 
 export const deleteHabit = (id) => {
   const db = readDatabase();
   const updated = db.filter(h => h.id !== id);
   writeDatabase(updated);
-}
+};
 
 export const updateHabit = (id, name, freq) => {
   const db = readDatabase();
@@ -38,7 +38,7 @@ export const updateHabit = (id, name, freq) => {
   if (freq) habit.freq = freq;
   writeDatabase(db);
   return habit;
-}
+};
 
 export const markDone = (id) => {
   const db = readDatabase();
@@ -50,7 +50,7 @@ export const markDone = (id) => {
     writeDatabase(db);
   }
   return habit;
-}
+};
 
 export const calculateStats = (days = 7) => {
   const db = readDatabase();
@@ -68,4 +68,4 @@ export const calculateStats = (days = 7) => {
       percent: ((recent.length / days) * 100).toFixed(1) + '%'
     };
   });
-}
+};
