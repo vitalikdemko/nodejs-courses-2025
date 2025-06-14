@@ -1,0 +1,36 @@
+[
+  {
+    "id": "7hlsy75f",
+    "name": "Читання Біблії",
+    "freq": "daily",
+    "createdAt": "2025-06-13T22:12:29.018Z",
+    "doneDates": [
+      "2025-06-14",
+      "2025-06-19",
+      "2025-06-09"
+    ]
+  },
+  {
+    "id": "so812me5",
+    "name": "Перегляд фільмів",
+    "freq": "weekly",
+    "createdAt": "2025-06-14T20:31:17.537Z",
+    "doneDates": []
+  },
+  {
+    "id": "wwkudnkv",
+    "name": "H2",
+    "freq": "weekly",
+    "createdAt": "2025-06-14T20:39:53.558Z",
+    "doneDates": []
+  },
+  {
+    "id": "so812me5",
+    "name": "H3",
+    "freq": "monthly",
+    "createdAt": "2025-06-14T20:43:35.741Z",
+    "doneDates": [
+      "2025-06-14"
+    ]
+  }
+]
