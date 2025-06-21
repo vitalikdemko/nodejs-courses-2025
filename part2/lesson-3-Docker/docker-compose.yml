@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  redis:
+    build: ./redis-like
+    networks:
+      internal:
+        aliases: ["redis"]
+
+  kv:
+    build: ./kv-server
+    ports:
+      - "8080:3000"
+    environment:
+      - REDIS_URL=http://redis:4000
+    depends_on:
+      - redis
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge

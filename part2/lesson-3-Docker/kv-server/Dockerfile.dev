@@ -1,0 +1,7 @@
+FROM node:18-alpine
+WORKDIR /app
+RUN npm install -g nodemon
+COPY ./src ./src
+WORKDIR /app/src
+EXPOSE 3000
+CMD ["nodemon", "--watch", ".", "--signal", "SIGTERM", "server.js"]
