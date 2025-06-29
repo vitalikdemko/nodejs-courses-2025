@@ -1,0 +1,150 @@
+openapi: 3.0.0
+info:
+  title: Brews API
+  version: 1.0.0
+paths:
+  /api/brews:
+    get:
+      summary: Get all brews
+      parameters:
+        - name: method
+          in: query
+          description: Filter by brew method
+          required: false
+          schema:
+            type: string
+            enum: [v60, aeropress, chemex, espresso]
+        - name: ratingMin
+          in: query
+          description: Minimum rating filter
+          required: false
+          schema:
+            type: number
+      responses:
+        '200':
+          description: List of brews
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Brew'
+    post:
+      summary: Create a new brew
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrewInput'
+      responses:
+        '201':
+          description: Brew created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brew'
+
+  /api/brews/{id}:
+    get:
+      summary: Get a brew by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Brew found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brew'
+        '404':
+          description: Not found
+
+    put:
+      summary: Update a brew
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrewInput'
+      responses:
+        '200':
+          description: Brew updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Brew'
+        '404':
+          description: Not found
+
+    delete:
+      summary: Delete a brew
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted successfully
+        '404':
+          description: Not found
+
+components:
+  schemas:
+    Brew:
+      type: object
+      properties:
+        id:
+          type: string
+        beans:
+          type: string
+          minLength: 3
+          maxLength: 40
+        method:
+          type: string
+          enum: [v60, aeropress, chemex, espresso]
+        rating:
+          type: number
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
+          maxLength: 200
+        brewedAt:
+          type: string
+          format: date-time
+
+    BrewInput:
+      type: object
+      required: [beans, method]
+      properties:
+        beans:
+          type: string
+          minLength: 3
+          maxLength: 40
+        method:
+          type: string
+          enum: [v60, aeropress, chemex, espresso]
+        rating:
+          type: number
+          minimum: 1
+          maximum: 5
+        notes:
+          type: string
+          maxLength: 200
+        brewedAt:
+          type: string
+          format: date-time
