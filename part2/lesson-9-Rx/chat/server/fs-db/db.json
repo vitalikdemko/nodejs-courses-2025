@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "688018cf-85a0-4d17-a72a-c40907abafa0",
+      "name": "V",
+      "iconUrl": "/api/users/icons/688018cf-85a0-4d17-a72a-c40907abafa0.png"
+    },
+    {
+      "id": "cdc65a6b-5ed6-4775-b7cd-1cb50cc66b7e",
+      "name": "DDDD",
+      "iconUrl": "/api/users/icons/cdc65a6b-5ed6-4775-b7cd-1cb50cc66b7e.png"
+    },
+    {
+      "id": "348e993b-93b5-47c9-860b-1b2589115619",
+      "name": "DDD",
+      "iconUrl": "/api/users/icons/348e993b-93b5-47c9-860b-1b2589115619.png"
+    }
+  ],
+  "chats": [],
+  "messages": []
+}
