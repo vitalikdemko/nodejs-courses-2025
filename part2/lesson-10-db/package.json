@@ -1,0 +1,31 @@
+{
+  "name": "sql-example",
+  "version": "0.0.1",
+  "description": "Simple TypeScript ORM example for PostgreSQL",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "demo": "tsx src/demo.ts",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix"
+  },
+  "dependencies": {
+    "pg": "^8.16.3",
+    "sql-template-strings": "^2.2.2",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/pg": "^8.15.4",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.13.0",
+    "typescript": "^5.7.3"
+  }
+}
