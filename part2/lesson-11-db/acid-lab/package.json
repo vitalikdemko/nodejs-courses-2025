@@ -18,9 +18,10 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-     "db:migrate": "docker exec -i acid_lab_db psql -U postgres -d acid_lab < ./src/migrations/init.sql",
-     "db:up": "docker-compose up -d",
-     "db:down": "docker-compose down"
+    "db:migrate": "docker exec -i acid_lab_db psql -U postgres -d acid_lab < ./src/migrations/init.sql",
+    "db:up": "docker-compose up -d",
+    "db:down": "docker-compose down",
+    "demo": "ts-node src/demo/demo.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
