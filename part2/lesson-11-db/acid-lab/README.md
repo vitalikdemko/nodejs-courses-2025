@@ -1,17 +1,17 @@
-# 💾 ACID Lab — PostgreSQL + NestJS + Transactions
+# ACID Lab — PostgreSQL + NestJS + Transactions
 
 This project is a simple demonstration of ACID properties in PostgreSQL using NestJS and TypeORM.
 
 ---
 
-## 🧪 Level 1 — Atomic Money Transfer
+## Level 1 — Atomic Money Transfer
 
-### ✅ What it does:
+### What it does:
 - Transfers money from one account to another using a database transaction.
 - If the sender doesn’t have enough money, the transfer is rejected.
 - No partial changes are saved (atomicity is preserved).
 
-### 📦 API
+### API
 
 #### `POST /transfer`
 ```json
@@ -22,10 +22,10 @@ This project is a simple demonstration of ACID properties in PostgreSQL using Ne
 }
 ```
 
-- ❌ Returns 400 if balance is not enough
-- ✅ Creates a movement record if successful
+- Returns 400 if balance is not enough
+- Creates a movement record if successful
 
-### 🧪 Test
+### Test
 
 Run the e2e test to check that:
 - The transfer is rejected when balance is not enough.
@@ -37,9 +37,9 @@ pnpm test:e2e
 
 ---
 
-## 🔁 Level 2 — Parallel Writer & Reader (Read Phenomena)
+## Level 2 — Parallel Writer & Reader (Read Phenomena)
 
-### ✅ What it does:
+### What it does:
 - Simulates **concurrent updates** using `writer.ts`.
 - Simulates **reading during updates** using `reader.ts`.
 
@@ -48,7 +48,7 @@ You can observe:
 - Non-repeatable reads
 - Phantom reads
 
-### 🔄 Run demo:
+### Run demo:
 
 ```bash
 pnpm demo
@@ -60,7 +60,7 @@ This will:
 
 ---
 
-## 🐳 PostgreSQL Setup with Docker
+## PostgreSQL Setup with Docker
 
 Start the DB:
 ```bash
@@ -79,7 +79,7 @@ pnpm db:down
 
 ---
 
-## 📁 Folder Structure
+## Folder Structure
 
 ```
 src/
