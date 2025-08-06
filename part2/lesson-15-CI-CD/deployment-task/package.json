@@ -1,0 +1,43 @@
+{
+  "name": "deployment-task",
+  "version": "1.0.0",
+  "description": "NestJS deployment task",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/src/main.js",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "schema:log": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js schema:log -d ./data-source.ts",
+    "schema:sync": "npx ts-node --transpile-only ./node_modules/typeorm/cli.js schema:sync -d ./data-source.ts",
+    "schema:check": "node scripts/schema-check.cjs",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/common": "^11.1.5",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.5",
+    "@nestjs/platform-express": "^11.1.5",
+    "@nestjs/typeorm": "^11.0.0",
+    "dotenv": "^17.2.1",
+    "pg": "^8.16.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typeorm": "^0.3.25"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "@types/dotenv": "^8.2.3",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "husky": "^9.1.7",
+    "ts-node": "^10.9.2",
+    "typeorm-ts-node-commonjs": "^0.3.20",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
+  }
+}
