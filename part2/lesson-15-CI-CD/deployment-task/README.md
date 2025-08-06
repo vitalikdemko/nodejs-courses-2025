@@ -17,7 +17,7 @@ This project is a minimal NestJS app used for CI/CD practice and schema checks w
   - `pnpm run schema:check`
 - App responds with "Hello World!" at `http://localhost:3000`
 
-## 🛠 Scripts
+## Scripts
 
 ```bash
 pnpm run build         # Compile TypeScript -> dist/
