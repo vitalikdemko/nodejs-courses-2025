@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Brews API
-  version: 1.0.0
+  version: 1.0.1
 paths:
   /api/brews:
     get:
@@ -44,7 +44,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Brew'
-
   /api/brews/{id}:
     get:
       summary: Get a brew by ID
@@ -63,7 +62,6 @@ paths:
                 $ref: '#/components/schemas/Brew'
         '404':
           description: Not found
-
     put:
       summary: Update a brew
       parameters:
@@ -87,7 +85,6 @@ paths:
                 $ref: '#/components/schemas/Brew'
         '404':
           description: Not found
-
     delete:
       summary: Delete a brew
       parameters:
@@ -101,14 +98,11 @@ paths:
           description: Deleted successfully
         '404':
           description: Not found
-
 components:
   schemas:
     Brew:
       type: object
       properties:
-        id:
-          type: string
         beans:
           type: string
           minLength: 3
@@ -126,10 +120,10 @@ components:
         brewedAt:
           type: string
           format: date-time
-
+        id:
+          type: string
     BrewInput:
       type: object
-      required: [beans, method]
       properties:
         beans:
           type: string
@@ -148,3 +142,4 @@ components:
         brewedAt:
           type: string
           format: date-time
+      required: [beans, method]

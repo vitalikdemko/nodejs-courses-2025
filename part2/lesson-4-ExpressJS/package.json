@@ -4,10 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "build": "esbuild index.js --bundle --platform=node --outfile=dist/server.mjs",
-    "start:dist": "node dist/server.mjs"
+    "build": "esbuild index.js --bundle --platform=node --format=esm --sourcemap --outfile=dist/server.mjs --packages=external",
+    "start": "node --enable-source-maps dist/server.mjs",
+    "dev": "esbuild index.js --bundle --platform=node --format=esm --sourcemap --outfile=dist/server.mjs --packages=external --watch"
   },
   "dependencies": {
     "@asteasolutions/zod-to-openapi": "^7.3.4",

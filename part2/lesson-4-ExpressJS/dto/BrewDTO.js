@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { registry } from '../openapi/registry.js';
 
 export const BrewDTO = z.object({
   beans: z.string().min(3).max(40),
@@ -8,5 +7,3 @@ export const BrewDTO = z.object({
   notes: z.string().max(200).optional(),
   brewedAt: z.string().datetime().optional()
 });
-
-registry.register('BrewDTO', BrewDTO);
