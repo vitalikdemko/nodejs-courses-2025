@@ -11,6 +11,10 @@ export const ChatProvider = ({ userName, children }: Props) => {
     return s;
   }, [userName]);
 
+  React.useEffect(() => () => {
+    svc.disconnectSocket();
+  }, [svc]);
+
   return <ChatCtx.Provider value={svc}>{children}</ChatCtx.Provider>;
 };
 

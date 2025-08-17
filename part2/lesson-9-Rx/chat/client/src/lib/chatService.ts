@@ -239,4 +239,14 @@ export class ChatService {
 
     return res.json() as Promise<T>;
   }
+
+  disconnectSocket() {
+  if (!this.socket) return;
+    this.socket.off('message');
+    this.socket.off('typing');
+    this.socket.off('chatCreated');
+    this.socket.off('membersUpdated');
+    this.socket.disconnect();
+    this.socket = undefined;
+  }
 }

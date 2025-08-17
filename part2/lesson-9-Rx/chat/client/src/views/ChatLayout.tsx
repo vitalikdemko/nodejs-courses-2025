@@ -102,24 +102,24 @@ export const ChatLayout = ({userName}: { userName: string }) => {
     /* ---------------- chat + members events -------------- */
     useEffect(() => {
       const c1 = svc.onChatCreated().subscribe((c) =>
-        setChats((p) => [...p, c]),
+        setChats((prev) => {
+          const i = prev.findIndex((x) => x.id === c.id);
+          if (i !== -1) {
+            const next = [...prev];
+            next[i] = { ...next[i], ...c };
+            return next;
+          }
+          return [...prev, c];
+        }),
       );
+
       const c2 = svc.onMembersUpdated().subscribe((u) =>
         setChats((p) => {
-          const result = p.map((c) =>
-            c.id === u.chatId ? {...c, members: u.members} : c,
-          ).filter(
-            (c) => c.members.includes(userName)
-          )
+          const result = p
+            .map((c) => (c.id === u.chatId ? { ...c, members: u.members } : c))
+            .filter((c) => c.members.includes(userName));
 
-          console.log('Updated chats:', result);
           const isBanned = !u.members.includes(userName);
-          console.log({
-            isBanned,
-            currentId: currentIdRef.current,
-            chatId: u.chatId,
-          })
-
           if (isBanned && currentIdRef.current === u.chatId) {
             leaveCurrentChat();
           }
@@ -131,7 +131,7 @@ export const ChatLayout = ({userName}: { userName: string }) => {
         c1.unsubscribe();
         c2.unsubscribe();
       };
-    }, []);
+    }, [svc, userName, leaveCurrentChat]);
 
     /* ---------------- helpers ---------------------------- */
     const selectChat = async (chat: ChatDTO) => {
