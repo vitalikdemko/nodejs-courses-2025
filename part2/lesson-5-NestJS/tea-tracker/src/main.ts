@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ApiKeyGuard } from './common/guards/api-key.guard';
 import { Reflector } from '@nestjs/core';
+import { TeaModule } from './tea/tea.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(TeaModule);
 
   app.useGlobalGuards(new ApiKeyGuard(app.get(Reflector)));
 

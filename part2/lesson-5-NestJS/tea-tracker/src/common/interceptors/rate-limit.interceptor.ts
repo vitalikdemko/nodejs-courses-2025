@@ -1,13 +1,6 @@
-import {
-  Injectable,
-  NestInterceptor,
-  ExecutionContext,
-  CallHandler,
-} from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, HttpStatus, HttpException} from '@nestjs/common';
 import { Observable } from 'rxjs';
 import rateLimit from 'express-rate-limit';
-import { BadRequestException } from '@nestjs/common';
-
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000, // 1 hours
   max: 10,
@@ -15,7 +8,7 @@ const limiter = rateLimit({
   legacyHeaders: false,
   keyGenerator: (req: any) => req.ip,
   handler: () => {
-    throw new BadRequestException('Too many requests, pls try again later');
+    throw new HttpException('Too many requests, pls try again later', HttpStatus.TOO_MANY_REQUESTS);
   },
 });
 

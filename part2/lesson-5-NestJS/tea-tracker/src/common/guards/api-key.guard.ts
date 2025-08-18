@@ -21,7 +21,7 @@ export class ApiKeyGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const apiKey = request.headers['x-api-key'];
 
-    if (apiKey !== '1111') {
+    if (apiKey !== 'im_rd_student') {
       throw new ForbiddenException('Invalid API key!');
     }
 

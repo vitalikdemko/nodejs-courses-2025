@@ -1,14 +1,16 @@
 import {
   CallHandler,
   ExecutionContext,
+  HttpException,
+  HttpStatus,
   Injectable,
   NestInterceptor,
   UseInterceptors,
   mixin,
-  BadRequestException,
 } from '@nestjs/common';
 import rateLimit from 'express-rate-limit';
 import { Observable } from 'rxjs';
+
 
 export function RateLimit(limit: number): MethodDecorator {
   @Injectable()
@@ -20,7 +22,7 @@ export function RateLimit(limit: number): MethodDecorator {
       legacyHeaders: false,
       keyGenerator: (req: any) => req.ip || 'unknown',
       handler: () => {
-        throw new BadRequestException('Too many requests');
+         throw new HttpException('Too many requests', HttpStatus.TOO_MANY_REQUESTS);
       },
     });
 

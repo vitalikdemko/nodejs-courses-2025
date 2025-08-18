@@ -1,15 +1,22 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateTeaDto, UpdateTeaDto } from './tea.dto';
+import { CreateTeaDto, Paginated, TeaListQuery, UpdateTeaDto } from './tea.dto';
 import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class TeaService {
   private teas: any[] = [];
 
-  findAll(minRating = 1): Promise<any[]> {
-    return Promise.resolve(
-      this.teas.filter((t) => (t.rating ?? 0) >= minRating),
-    );
+  findAll(q: TeaListQuery): Promise<Paginated<any>> {
+    const { minRating, page, pageSize } = q;
+
+    const filtered = typeof minRating === 'number' ?
+      this.teas.filter(t => (t.rating ?? 0) >= minRating) : [...this.teas];
+
+    const total = filtered.length;
+    const start = (page - 1) * pageSize;
+    const data = filtered.slice(start, start + pageSize);
+
+    return Promise.resolve({ data, total, page, pageSize });
   }
 
   findOne(id: string) {
