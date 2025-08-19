@@ -1,6 +1,6 @@
 # Mini Auth API
 
-Simple NestJS project for homework #19.
+NestJS mini‑API Auth:
 
 ## Requirements
 - Node.js 18+
