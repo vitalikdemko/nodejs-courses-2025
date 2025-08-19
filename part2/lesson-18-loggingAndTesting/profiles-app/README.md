@@ -46,7 +46,7 @@ $ pnpm run start:prod
 
 ## Run tests
 - Unit/Integration: `pnpm test`
-- E2E: `pnpm run test:e2e
+- E2E: `pnpm run test:e2e`
 
 ## Deployment
 
